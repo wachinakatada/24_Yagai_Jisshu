@@ -11,3 +11,28 @@
 
 1.1. WebRのデモ版 https://webr.r-wasm.org/latest/ をブラウザで開く。
 
+1.2. `vegan`をインストールする。
+```
+> library(vegan)
+```
+
+`vegan`を読み込めないので、ダウンロードするか聞かれるので、`Yes`
+```
+Failed to load package "vegan". Do you want to try downloading it from the webR binary repo? 
+
+1: Yes
+2: No
+
+Selection: Yes
+Downloading webR package: permute
+Downloading webR package: lattice
+Downloading webR package: MASS
+Downloading webR package: cluster
+Downloading webR package: nlme
+Downloading webR package: Matrix
+Downloading webR package: mgcv
+Downloading webR package: vegan
+Loading required package: permute
+Loading required package: lattice
+This is vegan 2.6-6.1
+```
