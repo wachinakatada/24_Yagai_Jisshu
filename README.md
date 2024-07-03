@@ -49,7 +49,7 @@ This is vegan 2.6-6.1
 
 2.2. Rにデータを読み込む。
 ```
-lepi.table <- read.table("BCI.txt", header = TRUE)
+lepi.table <- read.table("demo.txt", header = TRUE)
 ```
 データが `lepi.table` に格納されているはず。
 
