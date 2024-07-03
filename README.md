@@ -6,6 +6,9 @@
 ##### 2024年7月5日・琉大周辺で見られるチョウの種多様性の評価
 
 ##### 目標：Rパッケージ `vegan` を使って、多様性指数を計算する
+##### 注）付け焼き刃のため、何かとんでもない間違いをしているかもしれません。すみません。
+
+##### 2024年6月3日作成
 
 ##### 1. R環境の導入とveganのインストール
 今回は`webR`を利用します。
@@ -140,17 +143,44 @@ specpool(lepi.data, indices$環境)
 
 ```
 > specpool(lepi.data, indices$環境)
-       Species   chao  chao.se jack1 jack1.se    jack2     boot
-圃場        17  66.50 29.97229  26.0 5.267827 32.00000 20.80078
-実験林      16  65.50 29.96112  25.0 6.538348 31.00000 19.79688
-道路        28 118.75 75.53745  44.5 9.968701 54.83333 35.08594
-        boot.se n
-圃場   2.185570 4
-実験林 3.133387 4
-道路   4.257397 4
+       Species   chao  chao.se jack1 jack1.se    jack2     boot  boot.se n
+圃場        17  66.50 29.97229  26.0 5.267827 32.00000 20.80078  2.185570 4
+実験林      16  65.50 29.96112  25.0 6.538348 31.00000 19.79688  3.133387 4
+道路        28 118.75 75.53745  44.5 9.968701 54.83333 35.08594  4.257397 4
 ```
 
-3.2. 全体の種数、推定種数を計算する
+3.2. 環境ごとの累積種数グラフを描画する。
+
+色パレットの`wesanderson`をインストール
+
+```
+library(wesanderson)
+```
+```
+> library(wesanderson)
+Failed to load package "wesanderson". Do you want to try downloading it from the webR binary repo? 
+
+1: Yes
+2: No
+
+Selection: Yes
+Downloading webR package: wesanderson
+```
+
+```
+#道路
+plot(specaccum(lepi.data[1:4,]), col=wes_palette("Darjeeling1")[1], ylim=c(0,30))
+par(new=T)
+#圃場
+plot(specaccum(lepi.data[5:8,]), col=wes_palette("Darjeeling1")[2], ylim=c(0,30), ann=F)
+par(new=T)
+#実験林
+plot(specaccum(lepi.data[9:12,]), col=wes_palette("Darjeeling1")[3], ylim=c(0,30), ann=F)
+```
+
+`Save plot`で図をダウンロード
+
+3.3. 全体の種数、推定種数を計算する
 ```
 specnumber(colSums(lepi.data))
 ```
@@ -166,10 +196,58 @@ specpool(lepi.data)
 
 ```
 > specpool(lepi.data)
-    Species     chao  chao.se    jack1 jack1.se    jack2     boot
-All      42 64.04167 12.27606 63.08333 8.405934 73.91667 51.38597
-     boot.se  n
-All 4.356911 12
+    Species     chao  chao.se    jack1 jack1.se    jack2     boot   boot.se   n
+All      42 64.04167 12.27606 63.08333 8.405934 73.91667 51.38597   4.356911 12
 ```
+
+3.4. 全体の累積種数グラフを描画する。
+```
+plot(specaccum(lepi.data), col=wes_palette("Darjeeling1")[4])
+```
+
+`Save plot`で図をダウンロード
+
+4.1. それぞれの環境のベータ多様性（地点間の違い）を計算する
+
+今回は「ガンマ多様性 = アルファ多様性 + ベータ多様性」とする。
+
+```
+#道路
+specnumber(colSums(lepi.data[1:4,])) - mean(indices$alpha[1:4])
+
+#圃場
+specnumber(colSums(lepi.data[5:8,])) - mean(indices$alpha[5:8])
+
+#実験林
+specnumber(colSums(lepi.data[9:12,])) - mean(indices$alpha[9:12])
+```
+
+```
+> #道路
+specnumber(colSums(lepi.data[1:4,])) - mean(indices$alpha[1:4])
+
+#圃場
+specnumber(colSums(lepi.data[5:8,])) - mean(indices$alpha[5:8])
+
+#実験林
+specnumber(colSums(lepi.data[9:12,])) - mean(indices$alpha[9:12])
+[1] 17.5
+[1] 9.25
+[1] 9
+```
+
+4.2. 全体のベータ多様性（環境間の違い）を計算する
+```
+specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
+```
+
+```
+> specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
+[1] 21.66667
+```
+
+
+
+
 
 
