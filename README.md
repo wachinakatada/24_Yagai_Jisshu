@@ -116,6 +116,8 @@ indices$simpson <- diversity(lepi.data, "simpson")
 12 実験林    I     え     7 0.7900000
 ```
 
+##### 注）"区画"ごとに計算すべきと思いますが、やり方が分かりません。今回はとりあえず、"区画-観察者"を最小の単位として計算します。
+
 2.3. 環境ごとの種数を計算する
 ```
 specnumber(lepi.data, indices$環境)
