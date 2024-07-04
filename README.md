@@ -183,7 +183,7 @@ plot(specaccum(lepi.data[9:12,]), col=wes_palette("Darjeeling1")[3], ylim=c(0,30
 
 `Save plot`で図をダウンロード
 
-3.3. 全体の種数、推定種数を計算する
+#### 3.3. 全体の種数、推定種数を計算する
 ```
 specnumber(colSums(lepi.data))
 ```
