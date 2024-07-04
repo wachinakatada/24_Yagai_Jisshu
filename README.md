@@ -256,8 +256,9 @@ specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
 
 区画-観察者 = 地点 と仮定すると。。。
 
-|-|-|-|
+
 |階層|アルファ多様性|ベータ多様性|
+|-|-|-|
 |地点|8.42|11.91|
 |環境|20.33|21.67|
 |地域|42||
