@@ -1,6 +1,6 @@
 # 24_yagai_jisshu
 ## 2024年度・前期「生物学野外実習」理学部海洋自然科学科@琉大熱生研・西表研究施設
-### https://tiglon.jim.u-ryukyu.ac.jp/portal/Public/Syllabus/SyllabusSearchStart.aspx?lct_year=2024&lct_cd=401194001&je_cd=1
+##### https://tiglon.jim.u-ryukyu.ac.jp/portal/Public/Syllabus/SyllabusSearchStart.aspx?lct_year=2024&lct_cd=401194001&je_cd=1
 
 ### 2024年7月5日・琉大周辺で見られるチョウの種多様性の評価
 ### 目標：Rパッケージ `vegan` を使って、多様性指数を計算する
@@ -61,6 +61,8 @@ lepi.table <- read.table("demo.txt", header = TRUE)
 ```
 head(lepi.table)
 ```
+
+##### 実行結果
 ```
 > head(lepi.table)
   環境 区画 観察者 ジャコウアゲハ ベニモンアゲハ ナミアゲハ
@@ -80,7 +82,7 @@ head(lepi.table)
 # 列数の確認
 ncol(lepi.table)
 ```
-
+##### 実行結果
 ```
 > ncol(lepi.table)
 [1] 79
@@ -103,6 +105,7 @@ indices$alpha <- specnumber(lepi.data)
 indices$simpson <- diversity(lepi.data, "simpson")
 ```
 
+##### 実行結果
 ```
 > indices
      環境 区画 観察者 alpha   simpson
@@ -127,6 +130,7 @@ indices$simpson <- diversity(lepi.data, "simpson")
 specnumber(lepi.data, indices$環境)
 ```
 
+##### 実行結果
 ```
 > specnumber(lepi.data, indices$環境)
   圃場 実験林   道路 
@@ -148,6 +152,7 @@ specnumber(colSums(lepi.data[9:12,]))
 specpool(lepi.data, indices$環境)
 ```
 
+##### 実行結果
 ```
 > specpool(lepi.data, indices$環境)
        Species   chao  chao.se jack1 jack1.se    jack2     boot  boot.se n
@@ -163,6 +168,8 @@ specpool(lepi.data, indices$環境)
 ```
 library(wesanderson)
 ```
+
+##### 実行結果
 ```
 > library(wesanderson)
 Failed to load package "wesanderson". Do you want to try downloading it from the webR binary repo? 
@@ -174,6 +181,7 @@ Selection: Yes
 Downloading webR package: wesanderson
 ```
 
+`plot`でグラフを描画する
 ```
 #道路
 plot(specaccum(lepi.data[1:4,]), col=wes_palette("Darjeeling1")[1], ylim=c(0,30))
@@ -192,6 +200,7 @@ plot(specaccum(lepi.data[9:12,]), col=wes_palette("Darjeeling1")[3], ylim=c(0,30
 specnumber(colSums(lepi.data))
 ```
 
+##### 実行結果
 ```
 > specnumber(colSums(lepi.data))
 [1] 42
@@ -201,6 +210,7 @@ specnumber(colSums(lepi.data))
 specpool(lepi.data)
 ```
 
+##### 実行結果
 ```
 > specpool(lepi.data)
     Species     chao  chao.se    jack1 jack1.se    jack2     boot   boot.se   n
@@ -229,6 +239,7 @@ specnumber(colSums(lepi.data[5:8,])) - mean(indices$alpha[5:8])
 specnumber(colSums(lepi.data[9:12,])) - mean(indices$alpha[9:12])
 ```
 
+##### 実行結果
 ```
 > #道路
 specnumber(colSums(lepi.data[1:4,])) - mean(indices$alpha[1:4])
@@ -248,6 +259,7 @@ specnumber(colSums(lepi.data[9:12,])) - mean(indices$alpha[9:12])
 specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
 ```
 
+##### 実行結果
 ```
 > specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
 [1] 21.66667
@@ -277,6 +289,7 @@ specnumber(colSums(lepi.data)) - mean(specnumber(lepi.data, indices$環境))
 lepi.rare <- rrarefy(lepi.data, min(rowSums(lepi.data)))
 ```
 
+##### 実行結果
 ```
 > lepi.rare <- rrarefy(lepi.data, min(rowSums(lepi.data)))
 # このデータでは、12 に揃えられる
@@ -290,6 +303,7 @@ lepi.rare <- rrarefy(lepi.data, min(rowSums(lepi.data)))
 indices$alpha2 <- specnumber(lepi.rare)
 ```
 
+##### 実行結果
 ```
 > indices
      環境 区画 観察者 alpha   simpson alpha2
@@ -307,6 +321,7 @@ indices$alpha2 <- specnumber(lepi.rare)
 12 実験林    I     え     7 0.7900000      5
 ```
 
+##### 実行結果
 ```
 > specnumber(lepi.rare, indices$環境)
   圃場 実験林   道路 
