@@ -1,15 +1,16 @@
 # 24_yagai_jisshu
-#### 2024年度・前期「生物学野外実習」理学部海洋自然科学科
-##### https://tiglon.jim.u-ryukyu.ac.jp/portal/Public/Syllabus/SyllabusSearchStart.aspx?lct_year=2024&lct_cd=401194001&je_cd=1
-#### @琉大熱生研・西表研究施設
+## 2024年度・前期「生物学野外実習」理学部海洋自然科学科@琉大熱生研・西表研究施設
+### https://tiglon.jim.u-ryukyu.ac.jp/portal/Public/Syllabus/SyllabusSearchStart.aspx?lct_year=2024&lct_cd=401194001&je_cd=1
 
 ### 2024年7月5日・琉大周辺で見られるチョウの種多様性の評価
+### 目標：Rパッケージ `vegan` を使って、多様性指数を計算する
+### キーワード：多様性指数・アルファ多様性・ベータ多様性・ガンマ多様性・累積種数曲線・Chao指数
 
-#### 目標：Rパッケージ `vegan` を使って、多様性指数を計算する
-#### キーワード：多様性指数・アルファ多様性・ベータ多様性・ガンマ多様性・累積種数曲線・Chao指数
+### 2024年6月3日作成
+### 注）付け焼き刃のため、何かとんでもない間違いをしているかもしれません。すみません。
 
-#### 2024年6月3日作成
-#### 注）付け焼き刃のため、何かとんでもない間違いをしているかもしれません。すみません。
+
+
 
 #### 1. R環境の導入とveganのインストール
 今回は`webR`を利用します。
@@ -22,7 +23,10 @@ library(vegan)
 ```
 
 `vegan`を読み込めず、ダウンロードするか聞かれるので、`Yes`
+
+##### 実行結果
 ```
+> library(vegan)
 Failed to load package "vegan". Do you want to try downloading it from the webR binary repo? 
 
 1: Yes
